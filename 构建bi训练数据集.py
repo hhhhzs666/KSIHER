@@ -80,14 +80,14 @@ with jsonlines.open('data/task_3/train.jsonl', "r") as rfd:
             positive_examples.append(gold_knowledge)
             # print(hypothesis + "\t" + gold_knowledge + "\t" + str(1), file=chains_output)
             temp = []
-            for word in nltk.word_tokenize(gold_knowledge):
+            for word in nltk.word_tokenize(hypothesis):
                 if not word.lower() in stopwords.words("english"):
                     temp.append(utils.explanation_bank_lemmatize(word.lower()))
-            lemmatized_gold_knowledge = " ".join(temp)
+            lemmatized_hypothesis = " ".join(temp)
 
 
             # retrieve most similar negative facts
-            relevance_scores_negative = RS.compute(lemmatized_gold_knowledge, K)
+            relevance_scores_negative = RS.compute(lemmatized_hypothesis, K)
             count = 0
             for fact_negative in sorted(relevance_scores_negative, key=relevance_scores_negative.get, reverse=True):
                 if not fact_negative in chains:
