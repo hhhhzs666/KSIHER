@@ -21,9 +21,9 @@ If you want to train the dense encoder from scratch, you can use the released `t
 
 If needed, you can regenerate the training-set using the `build_bi-encoder_train_data.py` script.
 
-## Multi-hop Explanation Regeneration Experiment:
+##  Knowledge Selection based on Iterative Hybrid Encoding Experiment:
 
-Once the dense model is downloaded and unzipped in the apposite folder, run the following command to start the experiment:
+Put the trained models into the `.\models` folder, run the following command to start the experiment:
 
 `python ./explanation_regeneration_experiment.py`
 
