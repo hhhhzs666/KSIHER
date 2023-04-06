@@ -27,5 +27,5 @@ Put the trained models into the `.\models` folder, run the following command to 
 
 `python ./explanation_regeneration_experiment.py`
 
-This will create the [FAISS](https://faiss.ai/) index and perform multi-hop inference using SCAR
+This will create the [FAISS](https://faiss.ai/) index and perform multi-hop inference using Iterative Hybrid Encoding
 
