@@ -17,7 +17,7 @@ To reproduce our experiments, download the model and store it in `./models`.
 
 **Training:**
 
-If you want to train the dense encoder from scratch, you can use the released `train_bi-encoder.py` script. This will create a new [Sentence-BERT](https://www.sbert.net/) model (`bert-base-uncased`) and fine-tune it on the inference chains stored in `./data/training/chains_train.csv` via MultipleNegativesRankingLoss.
+If you want to train the dense encoder from scratch, you can use the released `train_bi-encoder.py` script. This will create a new [Sentence-BERT](https://www.sbert.net/) model (`bert-base-uncased`) and fine-tune it on the inference chains stored in `./entailmentbank/train/triplets_data.csv` via MultipleNegativesRankingLoss.
 
 If needed, you can regenerate the training-set using the `build_bi-encoder_train_data.py` script.
 
