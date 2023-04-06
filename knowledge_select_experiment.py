@@ -8,9 +8,9 @@ import pickle
 import faiss
 import numpy as np
 
-from explanation_retrieval.ranker.bm25 import BM25
+from explanation_retrieval.ranker.bm25_v2 import BM25
 from explanation_retrieval.ranker.relevance_score import RelevanceScore
-from explanation_retrieval.ranker.explanatory_power import ExplanatoryPower
+from explanation_retrieval.ranker.explanatory_power_v2 import ExplanatoryPower
 from explanation_retrieval.ranker.utils import Utils
 from sentence_transformers import SentenceTransformer
 
@@ -19,26 +19,25 @@ utils = Utils()
 utils.init_explanation_bank_lemmatizer()
 
 #Load facts bank
-with open("data/语料库/worldtree_corpus_sentences_extended.json", 'r') as f:
+with open("entailmentbank/data/worldtree_corpus_sentences_extended.json", 'r') as f:
     knowledge_train = json.load(f)
 
 #Load train and dev set (explanations corpus)
-with open("data/语料库/hypotheses_train.json", 'r') as f:
+with open("entailmentbank/data/hypotheses_train.json", 'r') as f:
     hypotheses_train = json.load(f)
 
-with open("data/语料库/chains_train.json", 'r') as f:
+with open("entailmentbank/data/chains_train.json", 'r') as f:
     chains_train = json.load(f)
 
-with open("data/语料库/hypotheses_test.json", 'r') as f:
+with open("entailmentbank/data/hypotheses_test.json", 'r') as f:
     hypotheses_test = json.load(f)
 
-with open("data/语料库/chains_test.json", 'r') as f:
+with open("entailmentbank/data/chains_test.json", 'r') as f:
     chains_test = json.load(f)
 
 
 #load dense model
-# dense_model_name = './models/em_bank_v4_nli'
-dense_model_name = './models/em_bank_v2'
+dense_model_name = './models/en_bank_nli'
 dense_model = SentenceTransformer(dense_model_name)
 
 ######### BUILD THE FAISS INDEX ###########
@@ -99,8 +98,8 @@ print("Corpus loaded with {} sentences / embeddings".format(len(corpus_sentences
 ######### MULTI-HOP EXPLANATION REGENERATION ###########
 
 # open output files to save the final results
-pred_q = open("prediction.txt", "w")
-out_q = open("retireval.txt", "w")
+pred_q = open("entailmentbank/outputs/prediction_top50.txt", "w")
+out_q = open("entailmentbank/outputs/retireval_top50.txt", "w")
 
 # Parameters
 K = 1000  # relevance limit
@@ -111,7 +110,7 @@ weights = [0.89, 0.11] # relevance and explanatory power weigths
 # -------------------------------------------------------------
 hypotheses_dataset = hypotheses_test # test hypotheses to adopt for the experiment
 
-Iterations = 5 # number of iterations
+Iterations = 9 # number of iterations
 
 # load and fit the sparse model
 sparse_model = BM25()
@@ -229,7 +228,7 @@ for q_id, exp in tqdm(hypotheses_dataset.items()):
         if not fact in partial_explanation:
             to_write = q_id + "\t" + fact
             print(to_write, file=pred_q)
-            if print_count < 20:
+            if print_count < 41:
                 if fact in chains_test[q_id]:
                     pre_list.append(fact)
                     print(knowledge_train[fact], "***", file = out_q)
@@ -240,7 +239,7 @@ for q_id, exp in tqdm(hypotheses_dataset.items()):
 
     pre_dict[q_id]=pre_list
 
-with open("data/语料库/pre_test.json",'w') as f:
+with open("entailmentbank/outputs/pre_test_top50.json",'w') as f:
     json.dump(pre_dict, f)
 
 pred_q.close()

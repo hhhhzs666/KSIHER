@@ -25,17 +25,18 @@ logger = logging.getLogger(__name__)
 
 
 
-train_path='data/语料库/cross_train.csv'
-dev_path='data/语料库/cross_dev.csv'
+train_path='entailmentbank/train/cross_train_1th.csv'   # Second training is cross_train_2th.csv
+dev_path='entailmentbank/train/cross_dev_1th.csv'
 
 
 #Define our Cross-Encoder
 train_batch_size = 200
-num_epochs = 12
-model_save_path = 'output/tanda+hard_negative_v5-'+datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+num_epochs = 12 # 2th train is 4
+model_save_path = 'models/tanda_reranker_1th'  # Second training is tanda_reranker_2th
 
-#We use distilroberta-base as base model and set num_labels=1, which predicts a continous score between 0 and 1
-model = CrossEncoder('tanda_roberta_base_asnq', num_labels=2,max_length=128)
+# The model we used can be downloaded here :
+# https://d3t7erp6ge410c.cloudfront.net/tanda-aaai-2020/models/tanda_roberta_base_asnq.tar
+model = CrossEncoder('models/tanda_roberta_base_asnq', num_labels=2,max_length=128)  # Second training is tanda_reranker_1th
 
 # model = torch.nn.DataParallel(model, device_ids=[0,1,2,3,4,5])
 

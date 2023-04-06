@@ -12,13 +12,13 @@ from datetime import datetime
 import json
 import csv
 
-with open("./data/语料库/worldtree_corpus_sentences_extended.json", "rb") as f:
+with open("./entailmentbank/data/worldtree_corpus_sentences_extended.json", "rb") as f:
     corpus = json.load(f) 
 
-with open("./data/语料库/chains_dev.json", "rb") as f:
+with open("./entailmentbank/data/chains_dev.json", "rb") as f:
     explanations = json.load(f) 
 
-with open("./data/语料库/hypotheses_dev.json", "rb") as f:
+with open("./entailmentbank/data/hypotheses_dev.json", "rb") as f:
     queries = json.load(f) 
 
 #### Just some code to print debug information to stdout
@@ -29,7 +29,7 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
 #### /print debug information to stdout
 
 # parameters
-train_batch_size = 28
+train_batch_size = 40
 num_epochs = 3
 model_save_path = './models/en_bank_nli'
 
@@ -44,7 +44,7 @@ logging.info("Read train dataset")
 
 train_examples = []
 
-with open('./data/语料库/triplets_data_v2.csv') as csvfile:
+with open('./entailmentbank/train/triplets_data.csv') as csvfile:
     spamreader = csv.reader(csvfile, delimiter='\t')
     for row in spamreader:
        

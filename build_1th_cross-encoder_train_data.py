@@ -6,9 +6,9 @@ import os
 import nltk
 from nltk.corpus import stopwords
 
-from explanation_retrieval.ranker.bm25 import BM25
+from explanation_retrieval.ranker.bm25_v2 import BM25
 from explanation_retrieval.ranker.relevance_score import RelevanceScore
-from explanation_retrieval.ranker.explanatory_power import ExplanatoryPower
+from explanation_retrieval.ranker.explanatory_power_v2 import ExplanatoryPower
 from explanation_retrieval.ranker.utils import Utils
 
 
@@ -17,21 +17,20 @@ utils = Utils()
 utils.init_explanation_bank_lemmatizer()
 
 # Load facts bank
-with open("data/语料库/worldtree_corpus_sentences_extended.json", 'r') as f:
+with open("entailmentbank/data/worldtree_corpus_sentences_extended.json", 'r') as f:
     knowledge_corpus = json.load(f)
 # print(knowledge_corpus)
 
 
 # Load train set (explanations corpus)
-with open("data/语料库/hypotheses_dev.json", 'r') as f:
+with open("entailmentbank/data/hypotheses_train.json", 'r') as f:
     hypotheses_train = json.load(f)
-
 
 
 ######### CHAINS EXTRACTION ###########
 
 # open output files to save the final results
-chains_output = open("./data/语料库/cross_dev.csv", "w")
+chains_output = open("./entailmentbank/train/cross_train_1th.csv", "w")
 
 # Parameters
 K = len(knowledge_corpus.items())
@@ -69,7 +68,7 @@ sparse_model.fit(facts_bank_lemmatized, explanations_corpus_lemmatized, ids, q_i
 RS = RelevanceScore(sparse_model)
 
 
-with jsonlines.open('data/task_3/dev.jsonl', "r") as rfd:
+with jsonlines.open('entailmentbank/task_3/train.jsonl', "r") as rfd:
     for item in rfd:
         positive_examples = []
         hypothesis=item['hypothesis']

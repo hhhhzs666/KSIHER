@@ -3,15 +3,15 @@ from sentence_transformers import SentenceTransformer, CrossEncoder, util
 from torch import nn
 import numpy as np
 
-cross_encoder = CrossEncoder('output/tanda+hard_negative_v2-2023-01-21_21-10-53')
+cross_encoder = CrossEncoder('models/tanda_reranker_2th')
 
-with open('./data/语料库/pre_test.json','r') as f:
+with open('entailmentbank/outputs/pre_test_top50.json','r') as f:
     pre_test=json.load(f)
 
-with open('./data/语料库/worldtree_corpus_sentences_extended.json','r') as f:
+with open('./entailmentbank/data/worldtree_corpus_sentences_extended.json','r') as f:
     corpus=json.load(f)
 
-with open('./data/语料库/hypotheses_test.json','r') as f:
+with open('./entailmentbank/data/hypotheses_test.json','r') as f:
     hypotheses_test=json.load(f)
 dic={}
 for query_id,knowledge_id in pre_test.items():
@@ -35,5 +35,5 @@ for query_id,knowledge_id in pre_test.items():
     # break
 
 
-with open("data/语料库/pre_rerank_25.json",'w') as f:
+with open("entailmentbank/outputs/pre_rerank_25.json",'w') as f:
     json.dump(dic, f)

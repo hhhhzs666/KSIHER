@@ -11,7 +11,8 @@ class ExplanatoryPower():
         for i in range(len(similar_questions)):
             if similar_questions[i]["id"] == q_id:
                 continue
-            for exp in self.EKB[similar_questions[i]["id"]]['_explanation']:
+            # for exp in self.EKB[similar_questions[i]["id"]]['_explanation']:
+            for exp in self.EKB[similar_questions[i]["id"]]:
                 if not exp in explanatory_power:
                     explanatory_power[exp] = 0
                 if similar_questions[i]["score"] > 0:

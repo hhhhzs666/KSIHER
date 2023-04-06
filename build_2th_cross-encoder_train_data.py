@@ -1,19 +1,19 @@
 import json
 import csv
 
-with open('data/语料库/chains_train.json','r') as f:
+with open('entailmentbank/data/chains_train.json','r') as f:
     true_train=json.load(f)
 
-with open('data/语料库/pre_train.json','r') as f:
+with open('entailmentbank/outputs/pre_train_top50.json','r') as f:
     pre_train=json.load(f)
     
-with open("data/语料库/worldtree_corpus_sentences_extended.json", 'r') as f:
+with open("entailmentbank/data/worldtree_corpus_sentences_extended.json", 'r') as f:
     knowledge_corpus = json.load(f)
 
-with open("data/语料库/hypotheses_train.json", 'r') as f:
+with open("entailmentbank/data/hypotheses_train.json", 'r') as f:
     hypotheses_train = json.load(f)
 
-output=open('data/语料库/hard_negative_100.csv','w')  
+output=open('entailmentbank/train/cross_train_2th.csv','w')  
 
 for i,j in pre_train.items():
     true_k=true_train[i] #true list k
