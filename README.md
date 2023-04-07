@@ -25,7 +25,7 @@ If you want to train the dense encoder from scratch, you can use the released `t
 
 If needed, you can regenerate the training-set using the `build_bi-encoder_train_data.py` script.
 
-## Cross-Encorder
+## Cross-Encoder
 
 The pre-trained TANDA cross-encoder used in our experiments can be downloaded [here!](https://d3t7erp6ge410c.cloudfront.net/tanda-aaai-2020/models/tanda_roberta_base_asnq.tar)
 
