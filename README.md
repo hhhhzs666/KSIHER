@@ -1,6 +1,10 @@
 # KSIHER
 Code and data for the paper "A General Coarse-to-fine Approach for Knowledge Selection based on Iterative Hybrid Encoding and Re-ranking"
 
+## Abstract
+
+Knowledge selection is a challenging task which often deals with semantic drift issues when knowledge is retrieved based on semantic similarity between a fact and a question. This paper presents a coarse-to-fine framework for alleviating these issues. Firstly, a sparse encoder and a dense encoder are coupled iteratively to retrieve fact candidates from a large-scale knowledge base. Secondly, a pre-trained language model with two rounds of fine-tuning using results of the sparse and dense encoders is used to re-rank fact candidates. Finally, top-k facts are selected by a specific re-ranker. An extensive evaluation is performed on two textual inference datasets and one knowledge-grounded question answering dataset. Experimental results show that: (1) the coarse-to-fine framework can improve the performance of knowledge selection by reducing the semantic drift; (2) the proposed approach is scalable and produces outstanding results on the benchmark datasets.
+
 ## Setup:
 
 Install the [sentence-transformers](https://www.sbert.net/) package:
