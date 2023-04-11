@@ -1,0 +1,12 @@
+torch
+logging
+datetime
+json
+csv
+gzip
+numpy
+tqdm
+nltk
+jsonlines
+sentence-transformers
+faiss-gpu
