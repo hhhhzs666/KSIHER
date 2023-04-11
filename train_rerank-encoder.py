@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader
-import math
+
 from sentence_transformers import LoggingHandler, util
 from sentence_transformers.cross_encoder import CrossEncoder
 from sentence_transformers.cross_encoder.evaluation import CECorrelationEvaluator,CESoftmaxAccuracyEvaluator
@@ -8,7 +8,6 @@ import logging
 from datetime import datetime
 import sys
 import os
-import gzip
 import csv
 import torch
 
