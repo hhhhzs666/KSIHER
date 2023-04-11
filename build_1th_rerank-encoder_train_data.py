@@ -30,7 +30,7 @@ with open("entailmentbank/data/hypotheses_train.json", 'r') as f:
 ######### CHAINS EXTRACTION ###########
 
 # open output files to save the final results
-chains_output = open("./entailmentbank/train/cross_train_1th.csv", "w")
+chains_output = open("./entailmentbank/train/rerank_train_1th.csv", "w")
 
 # Parameters
 K = len(knowledge_corpus.items())
