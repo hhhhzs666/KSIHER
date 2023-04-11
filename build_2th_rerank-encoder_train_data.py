@@ -13,7 +13,7 @@ with open("entailmentbank/data/worldtree_corpus_sentences_extended.json", 'r') a
 with open("entailmentbank/data/hypotheses_train.json", 'r') as f:
     hypotheses_train = json.load(f)
 
-output=open('entailmentbank/train/cross_train_2th.csv','w')  
+output=open('entailmentbank/train/rerank_train_2th.csv','w')  
 
 for i,j in pre_train.items():
     true_k=true_train[i] #true list k

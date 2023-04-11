@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader
-import math
+
 from sentence_transformers import LoggingHandler, util
 from sentence_transformers.cross_encoder import CrossEncoder
 from sentence_transformers.cross_encoder.evaluation import CECorrelationEvaluator,CESoftmaxAccuracyEvaluator
@@ -8,7 +8,6 @@ import logging
 from datetime import datetime
 import sys
 import os
-import gzip
 import csv
 import torch
 
@@ -25,8 +24,8 @@ logger = logging.getLogger(__name__)
 
 
 
-train_path='entailmentbank/train/cross_train_1th.csv'   # Second training is cross_train_2th.csv
-dev_path='entailmentbank/train/cross_dev_1th.csv'
+train_path='entailmentbank/train/rerank_train_1th.csv'   # Second training is rerank_train_2th.csv
+dev_path='entailmentbank/train/rerank_dev_1th.csv'
 
 
 #Define our Cross-Encoder
