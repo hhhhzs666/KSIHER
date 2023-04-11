@@ -62,3 +62,8 @@ Put the trained models into the `./models` folder, run the following command to 
 Once the experiment is completed, you can compute the F1 score using the following command:
 
 `python ./F1_score.py`
+
+##  Acknowledgement
+
+Thanks to [Valentino et al](https://github.com/ai-systems/hybrid_autoregressive_inference) for thrie research. Our proposed approach is built upon the work
+of [Hybrid Autoregressive Inference for Scalable Multi-Hop Explanation Regeneration](https://arxiv.org/abs/2107.11879). 
