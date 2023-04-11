@@ -17,7 +17,7 @@ Install the [faiss-gpu](https://pypi.org/project/faiss-gpu/) package:
 
 ## Hybrid-Encoder:
 
-To reproduce our experiments, train the model and store it in `./models`.
+To reproduce our experiments, train the model and store it in `./models`, train-set stored in `./entailmentbank/train`, outputs stored in `./entailmentbank/outputs`
 
 First you can regenerate the training-set using the `build_bi-encoder_train_data.py` script and output the inference chains stored in `./entailmentbank/train/triplets_data.csv`.
 
