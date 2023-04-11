@@ -7,13 +7,9 @@ Knowledge selection is a challenging task which often deals with semantic drift 
 
 ## Setup:
 
-Install the [sentence-transformers](https://www.sbert.net/) package:
+Install all packages:
 
-`pip install -U sentence-transformers`
-
-Install the [faiss-gpu](https://pypi.org/project/faiss-gpu/) package:
-
-`pip install faiss-gpu`
+`pip install -r requirements.txt`
 
 ## Hybrid-Encoder:
 
